@@ -27,15 +27,13 @@ begin
 	turb_ad_url = "https://github.com/jbisits/PassiveTracerFlows_demos/blob/main/Animations/turb_avd-diff_tracer.mp4"
 end
 
-# ╔═╡ e9fdd152-be5f-42f9-9a74-3d4ca898df9a
-begin
-	adv_diff = "/Users/Joey/Documents/GitHub/PassiveTracerFlows_demos/Animations/avd-diff_tracer.mp4"
-	cats_eye = "/Users/Joey/Documents/GitHub/PassiveTracerFlows_demos/Animations/avd-diff_catseye_tracer.mp4"
-	turb_ad = "/Users/Joey/Documents/GitHub/PassiveTracerFlows_demos/Animations/turb_avd-diff_tracer.mp4"
-end
+# ╔═╡ 65fb8ee6-eaac-48d8-8b35-35747729d5b1
+Resource(adv_diff_url)
 
-# ╔═╡ 8eaace0d-878e-4fa0-b375-4fe220bf621a
-Resource(cats_eye_url)
+# ╔═╡ 84614b56-42e6-4ec0-9ca1-789d09911ddc
+md"""
+I have not been able to get these `Resource`s to appear in the notebook so instead i will use a `LocalResource`.
+"""
 
 # ╔═╡ 3a22c38a-f530-487a-ba6f-1e9faeca6f36
 md"""
@@ -44,6 +42,16 @@ md"""
 Thus far cannot make the `Resource` work.
 Not sure if this is a GitHub issue to do with how the files are saved or just have the address wrong.
 """
+
+# ╔═╡ 171d64c3-caf0-4425-ac65-ff034770d920
+path_to_anims = "/Users/Joey/Documents/GitHub/PassiveTracerFlows_demos/Animations"
+
+# ╔═╡ f37333ef-5b7d-4e4a-922d-32298fd05c35
+begin
+	adv_diff = joinpath(path_to_anims, "avd-diff_tracer.mp4")
+	cats_eye = joinpath(path_to_anims, "avd-diff_catseye_tracer.mp4")
+	turb_ad = joinpath(path_to_anims, "turb_avd-diff_tracer.mp4")
+end
 
 # ╔═╡ 61b91bdf-ead5-4aa1-a4d5-1e1cda8c50cd
 begin
@@ -102,7 +110,7 @@ begin
 	Another model (the two layer quasi-geostrophic model) is used to generate the flow field which is then used to advect the passive tracer.
 
 	All the simulations were generated using the Julia package `PassiveTracerFlows.jl`.
-	The code repository to generate these simulations and this dashboard can be found here
+	The code repository to generate these simulations and this dashboard can be found here https://github.com/jbisits/PassiveTracerFlows_demos.
 	"""
 end
 
@@ -123,16 +131,18 @@ dash_final_url = "http://localhost:1234/edit?" * "id=$notebook&" * join(["isolat
 # ╟─15bb6500-b175-422d-b2a5-2b66aae0af41
 # ╠═84e02c5a-a436-4ecf-bc05-5c23ffa32f1a
 # ╠═003ae29b-3e89-4369-bd9b-8cfd9889421d
-# ╠═e9fdd152-be5f-42f9-9a74-3d4ca898df9a
-# ╠═8eaace0d-878e-4fa0-b375-4fe220bf621a
+# ╠═65fb8ee6-eaac-48d8-8b35-35747729d5b1
+# ╟─84614b56-42e6-4ec0-9ca1-789d09911ddc
 # ╟─3a22c38a-f530-487a-ba6f-1e9faeca6f36
+# ╠═171d64c3-caf0-4425-ac65-ff034770d920
+# ╠═f37333ef-5b7d-4e4a-922d-32298fd05c35
 # ╠═61b91bdf-ead5-4aa1-a4d5-1e1cda8c50cd
 # ╠═2090be93-dc9e-4f1b-a0ef-b337f556a32d
 # ╠═8f5a8658-d2cd-4e13-8423-3217c616ca44
 # ╟─3f51870b-c4b7-405a-9e1e-f35dd70aac8f
-# ╠═88abdf87-52ec-4141-8fb6-3170d46e77ee
-# ╠═2a776370-2764-4ff0-ab2e-c1162f032bad
-# ╠═fe3e08f8-3dd0-4ebe-a1e7-7ec063222aba
-# ╠═092a445d-7ece-4eb5-844b-c6032e6e4c09
-# ╠═f4a2dbcf-e134-4530-b464-d1dc38236e53
-# ╠═8f410075-033a-4cdf-827e-3e89d4db3762
+# ╟─88abdf87-52ec-4141-8fb6-3170d46e77ee
+# ╟─2a776370-2764-4ff0-ab2e-c1162f032bad
+# ╟─fe3e08f8-3dd0-4ebe-a1e7-7ec063222aba
+# ╟─092a445d-7ece-4eb5-844b-c6032e6e4c09
+# ╟─f4a2dbcf-e134-4530-b464-d1dc38236e53
+# ╟─8f410075-033a-4cdf-827e-3e89d4db3762
