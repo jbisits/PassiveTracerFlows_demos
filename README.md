@@ -18,3 +18,5 @@ julia>]
 After this the scripts `Gaussian_diff_2D.jl` and `cats_eye_flow.jl` can be run.
 
 To run the `animate_tracer.jl` script the tracer data first needs to be downloaded from [here](https://figshare.com/articles/dataset/Ensemble_member_simulation_data/20188739).
+
+Many thanks to @ghaetinger for [this](https://www.youtube.com/watch?v=dP9UuEL00iM&t=437s) brilliant demonstration of how to use [Pluto.jl](https://github.com/fonsp/Pluto.jl) to create a dashboard!
