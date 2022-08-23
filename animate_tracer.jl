@@ -35,6 +35,6 @@ Colorbar(fig[2, 1], hm; label = "Concentration", vertical = false, flipaxis = fa
 rowsize!(fig.layout, 1, Aspect(1, 1.0))
 
 snapshots = 1:length(t)
-record(fig, "turb_avd-diff_tracer.mp4", snapshots, framerate = 15) do i
+record(fig, "Animations/turb_avd-diff_tracer.mp4", snapshots, framerate = 15) do i
     n[] = i
 end

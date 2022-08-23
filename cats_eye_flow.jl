@@ -1,4 +1,4 @@
-## Diffusion of Gaussian initial tracer concentration in 2D
+# Using a cat-s eye flow from [Scalar transport and alpha-effect for a family of cat’s-eye flows](https://www.cambridge.org/core/journals/journal-of-fluid-mechanics/article/abs/scalar-transport-and-alphaeffect-for-a-family-of-catseye-flows/A649BCF133BB25DA3B80239024945C77)
 
 using PassiveTracerFlows, LinearAlgebra
 
@@ -7,18 +7,24 @@ dev = CPU()
 
 nsteps = 12000
 Δt = 0.005
-Lx = 128
-nx = 256
-κ = 0.3
+Lx = 32
+nx = 64
+κ = 0.1
 stepper = "RK4"
-u(x, y) = 1.0
-advecting_flow = TwoDAdvectingFlow(; u, steadyflow = true)
+ϵ = 0.5
+# Streamfunction
+ψ(x, y) = sin(x) * sin(y) + ϵ * cos(x) * cos(y)
+# u = -∂ψ/∂y, v = ∂ψ/∂x
+u(x, y) = -sin(x) * cos(y) + ϵ * cos(x) * sin(y)
+v(x, y) =  cos(x) * sin(y) - ϵ * sin(y) * cos(x)
+
+advecting_flow = TwoDAdvectingFlow(; u, v, steadyflow = true)
 
 prob = TracerAdvectionDiffusion.Problem(dev, advecting_flow; nx = nx, Lx = Lx, κ, dt = Δt, stepper)
 
 sol, clock, vars, params, grid = prob.sol, prob.clock, prob.vars, prob.params, prob.grid
 x, y = grid.x, grid.y
-
+xgrid, ygrid = gridpoints(grid)
 ## Initial condition
 
 gaussian(x, y, σ) = exp(-(x^2 + y^2) / 2σ^2)
@@ -35,7 +41,7 @@ function get_concentration(prob)
     return prob.vars.c
 end
   
-output = Output(prob, "Data/advection-diffusion2D.jld2",
+output = Output(prob, "Data/adv-diff_catseye_2D.jld2",
                 (:concentration, get_concentration))
 saveproblem(output)
 
@@ -57,7 +63,7 @@ end
 
 ## Create an animation
 
-tracer_data = jldopen("Data/advection-diffusion2D.jld2")
+tracer_data = jldopen("Data/adv-diff_catseye_2D.jld2")
 
 iterations = parse.(Int, keys(tracer_data["snapshots/t"]))
 t = round.([tracer_data["snapshots/t/$i"] for i ∈ iterations])
@@ -79,10 +85,11 @@ ax = Axis(fig[1, 1],
             title = title)
 
 hm = heatmap!(ax, x, y, c_anim; colormap = :deep)
+contour!(ax, x, y, ψ.(xgrid, ygrid); color = :black)
 Colorbar(fig[2, 1], hm; label = "Concentration", vertical = false, flipaxis = false)
 rowsize!(fig.layout, 1, Aspect(1, 1.0))
 
 snapshots = 1:length(t)
-record(fig, "Animations/avd-diff_tracer.mp4", snapshots, framerate = 15) do i
+record(fig, "Animations/avd-diff_catseye_tracer.mp4", snapshots, framerate = 15) do i
     n[] = i
 end
