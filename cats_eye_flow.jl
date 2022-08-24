@@ -5,13 +5,13 @@ using PassiveTracerFlows, LinearAlgebra
 ## Setting up the probelem
 dev = CPU()
 
-nsteps = 12000
+nsteps = 18000
 Δt = 0.005
 Lx = 32
 nx = 64
 κ = 0.1
 stepper = "RK4"
-ϵ = 0.5
+ϵ = 0.1
 # Streamfunction
 ψ(x, y) = sin(x) * sin(y) + ϵ * cos(x) * cos(y)
 # u = -∂ψ/∂y, v = ∂ψ/∂x

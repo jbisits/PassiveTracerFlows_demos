@@ -1,11 +1,11 @@
 ## Diffusion of Gaussian initial tracer concentration in 2D
 
-using PassiveTracerFlows, LinearAlgebra
+using PassiveTracerFlows, LinearAlgebra, Printf, CairoMakie, JLD2
 
 ## Setting up the probelem
 dev = CPU()
 
-nsteps = 12000
+nsteps = 18000
 Δt = 0.005
 Lx = 128
 nx = 256
