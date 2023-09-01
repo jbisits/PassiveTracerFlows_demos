@@ -60,6 +60,8 @@ begin
 			
 			The rotating tank showed how a dye spreads out in various flows.
 			We can use the advection-diffusion (or move around-spread out) equation to simulate what happens to a concentration field (like a dye) in different flow fields.
+
+			For more information about our group visit the [Climate data and dynamics lab website](https://climate-data-dynamics.github.io/climate-data-dynamics-lab-website/).
 			""",
 			#Need the newline for the zoomed in version of the presentation
 			md"""\
@@ -128,7 +130,7 @@ Not sure if this is a GitHub issue to do with how the files are saved or just ha
 """
 
 # ╔═╡ 171d64c3-caf0-4425-ac65-ff034770d920
-path_to_anims = "/Users/Joey/Documents/GitHub/PassiveTracerFlows_demos/Animations"
+path_to_anims = joinpath(pwd(), "animations")
 
 # ╔═╡ f37333ef-5b7d-4e4a-922d-32298fd05c35
 begin
@@ -184,14 +186,6 @@ dash_final_url = "http://localhost:1234/edit?" * "id=$notebook&" * join(["isolat
 # ╔═╡ 8f410075-033a-4cdf-827e-3e89d4db3762
 @htl("""<a href="$dash_final_url" style="font-size: 30px">Click here to get to the dashboard!</a>""")
 
-# ╔═╡ 0c76119f-8826-4fda-bd4d-566adb7a40c8
-html"""
-<img src=$(LocalResource(unsw_logo)) width="50" height="60">
-"""
-
-# ╔═╡ 13330e3f-38a9-4500-99ac-c1f295122e91
-LocalResource(unsw_logo)
-
 # ╔═╡ Cell order:
 # ╟─068fc5c9-2077-4ca4-ae7b-7a09cf0a012c
 # ╟─15bb6500-b175-422d-b2a5-2b66aae0af41
@@ -214,5 +208,3 @@ LocalResource(unsw_logo)
 # ╠═092a445d-7ece-4eb5-844b-c6032e6e4c09
 # ╠═f4a2dbcf-e134-4530-b464-d1dc38236e53
 # ╠═8f410075-033a-4cdf-827e-3e89d4db3762
-# ╠═0c76119f-8826-4fda-bd4d-566adb7a40c8
-# ╠═13330e3f-38a9-4500-99ac-c1f295122e91
